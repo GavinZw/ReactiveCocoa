@@ -20,7 +20,8 @@ Pod::Spec.new do |s|
   s.osx.source_files = "ReactiveCocoa/AppKit/*.{swift}"
   s.ios.source_files = "ReactiveCocoa/UIKit/*.{swift}"
   s.tvos.source_files = "ReactiveCocoa/UIKit/*.{swift}"
-  s.tvos.exclude_files = "ReactiveCocoa/UIKit/*{UIDatePicker,UISwitch}*"
+  s.tvos.exclude_files = "ReactiveCocoa/UIKit/*{UIDatePicker,UISwitch,iOS}*"
+  s.ios.exclude_files = "ReactiveCocoa/UIKit/*{tvOS}*"
   s.watchos.exclude_files = "ReactiveCocoa/Shared/*.{swift}"
   s.module_map = "ReactiveCocoa/module.modulemap"
   
