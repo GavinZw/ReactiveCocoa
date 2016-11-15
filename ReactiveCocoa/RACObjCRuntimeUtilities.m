@@ -10,6 +10,7 @@ const NSExceptionName RACSwizzleException = @"RACSwizzleException";
 static NSString * const RACSignalForSelectorAliasPrefix = @"rac_swift_";
 static NSString * const RACSubclassSuffix = @"_RACIntercepting";
 static void *RACSubclassAssociationKey = &RACSubclassAssociationKey;
+static void *RACProxyAssocationKey = &RACProxyAssocationKey;
 
 static NSMutableSet *swizzledClasses() {
 	static NSMutableSet *set;
@@ -22,7 +23,7 @@ static NSMutableSet *swizzledClasses() {
 	return set;
 }
 
-static SEL RACAliasForSelector(SEL originalSelector) {
+SEL RACAliasForSelector(SEL originalSelector) {
 	NSString *selectorName = NSStringFromSelector(originalSelector);
 	return NSSelectorFromString([RACSignalForSelectorAliasPrefix stringByAppendingString:selectorName]);
 }
@@ -161,7 +162,7 @@ static void RACSwizzleMethodSignatureForSelector(Class class) {
 // It's hard to tell which struct return types use _objc_msgForward, and
 // which use _objc_msgForward_stret instead, so just exclude all struct, array,
 // union, complex and vector return types.
-static void RACCheckTypeEncoding(const char *typeEncoding) {
+void RACCheckTypeEncoding(const char *typeEncoding) {
 #if !NS_BLOCK_ASSERTIONS
 	// Some types, including vector types, are not encoded. In these cases the
 	// signature starts with the size of the argument frame.
@@ -188,7 +189,7 @@ static const char *RACSignatureForUndefinedSelector(SEL selector) {
 	return signature.UTF8String;
 }
 
-static Class RACSwizzleClass(NSObject *self) {
+Class RACSwizzleClass(NSObject *self, NSString *suffix) {
 	Class statedClass = self.class;
 	Class baseClass = object_getClass(self);
 
@@ -226,7 +227,8 @@ static Class RACSwizzleClass(NSObject *self) {
 		return baseClass;
 	}
 
-	const char *subclassName = [className stringByAppendingString:RACSubclassSuffix].UTF8String;
+	NSString *nameSuffix = suffix != nil ? [suffix stringByAppendingString:RACSubclassSuffix] : RACSubclassSuffix;
+	const char *subclassName = [className stringByAppendingString:nameSuffix].UTF8String;
 	Class subclass = objc_getClass(subclassName);
 
 	if (subclass == nil) {
@@ -251,13 +253,68 @@ static Class RACSwizzleClass(NSObject *self) {
 
 @implementation NSObject (RACObjCRuntimeUtilities)
 
+-(RACDelegateProxy*) _rac_delegateProxyForSelector:(SEL)selector withProtocol:(Protocol *)protocol {
+	RACDelegateProxy* proxy = objc_getAssociatedObject(self, RACProxyAssocationKey);
+
+	if (proxy != nil) {
+		return proxy;
+	}
+
+	Class class = RACSwizzleClass(self, nil);
+	NSCAssert(class != nil, @"Could not swizzle class of %@", self);
+
+	SEL aliasSelector = RACAliasForSelector(selector);
+	Method originalSetter = class_getInstanceMethod([class superclass], selector);
+
+	// Make a method alias for the existing method implementation.
+	const char *typeEncoding = method_getTypeEncoding(originalSetter);
+	RACCheckTypeEncoding(typeEncoding);
+
+	void (*originalSetterIMP)(id, SEL, id _Nullable) = (typeof(originalSetterIMP)) method_getImplementation(originalSetter);
+
+	proxy = [[RACDelegateProxy alloc]
+					 initWithProtocol:protocol
+					 forObject:self
+					 originalSetterSelector:selector
+					 IMP:originalSetterIMP];
+
+	if (class_getInstanceMethod(class, aliasSelector) == nil) {
+		IMP newSetterIMP = imp_implementationWithBlock(^(id object, id delegate) {
+			RACDelegateProxy* proxy = objc_getAssociatedObject(object, RACProxyAssocationKey);
+
+			if (proxy == nil) {
+				// `[self class]` is always the stated class in isa-swizzled class.
+				struct objc_super target = {
+					.super_class = [object class],
+					.receiver = object,
+				};
+				void(*messageSend)(struct objc_super *, SEL, id) = (__typeof__(messageSend))objc_msgSendSuper;
+				return messageSend(&target, selector, delegate);
+			} else {
+				[proxy setDelegate:delegate];
+			}
+		});
+
+		BOOL addedAlias __attribute__((unused)) = class_addMethod(class, aliasSelector, newSetterIMP, typeEncoding);
+		NSCAssert(addedAlias, @"Original implementation for %@ is already copied to %@ on %@", NSStringFromSelector(selector), NSStringFromSelector(aliasSelector), class);
+	}
+
+	// Redefine the selector to call -forwardInvocation:.
+	class_replaceMethod(class, selector, _objc_msgForward, typeEncoding);
+
+	objc_setAssociatedObject(self, RACProxyAssocationKey, proxy, OBJC_ASSOCIATION_RETAIN);
+	originalSetterIMP(self, selector, proxy);
+
+	return proxy;
+}
+
 -(BOOL) _rac_setupInvocationObservationForSelector:(SEL)selector protocol:(Protocol *)protocol receiver:(void (^)(void))receiver {
 	SEL aliasSelector = RACAliasForSelector(selector);
 
 	__block void (^existingReceiver)(void) = objc_getAssociatedObject(self, aliasSelector);
 	if (existingReceiver != nil) return NO;
 
-	Class class = RACSwizzleClass(self);
+	Class class = RACSwizzleClass(self, nil);
 	NSCAssert(class != nil, @"Could not swizzle class of %@", self);
 
 	objc_setAssociatedObject(self, aliasSelector, receiver, OBJC_ASSOCIATION_RETAIN);
@@ -299,7 +356,13 @@ static Class RACSwizzleClass(NSObject *self) {
 		// Redefine the selector to call -forwardInvocation:.
 		class_replaceMethod(class, selector, _objc_msgForward, method_getTypeEncoding(targetMethod));
 	}
-	
+
+	RACDelegateProxy* proxy = objc_getAssociatedObject(self, RACProxyAssocationKey);
+
+	if (proxy != nil) {
+		[proxy updateDelegator];
+	}
+
 	return YES;
 }
 

@@ -162,6 +162,17 @@
 		9ADFE5A61DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFE5A41DC0001C001E11F7 /* NSObject+Synchronizing.swift */; };
 		9ADFE5A71DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFE5A41DC0001C001E11F7 /* NSObject+Synchronizing.swift */; };
 		9ADFE5A81DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADFE5A41DC0001C001E11F7 /* NSObject+Synchronizing.swift */; };
+		9AE7C2961DDB737500F7534C /* RACDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */; };
+		9AE7C2971DDB737500F7534C /* RACDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */; };
+		9AE7C2981DDB737500F7534C /* RACDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */; };
+		9AE7C2991DDB737500F7534C /* RACDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */; };
+		9AE7C29A1DDB751700F7534C /* RACDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9AE7C29B1DDB751800F7534C /* RACDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9AE7C29C1DDB751900F7534C /* RACDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9AE7C29D1DDB751A00F7534C /* RACDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9AE7C29F1DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C29E1DDBB50100F7534C /* RACDelegateProxySpec.swift */; };
+		9AE7C2A01DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C29E1DDBB50100F7534C /* RACDelegateProxySpec.swift */; };
+		9AE7C2A11DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE7C29E1DDBB50100F7534C /* RACDelegateProxySpec.swift */; };
 		9AF0EA751D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0EA741D9A7FF700F27DDF /* NSObject+BindingTarget.swift */; };
 		9AF0EA761D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0EA741D9A7FF700F27DDF /* NSObject+BindingTarget.swift */; };
 		9AF0EA771D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0EA741D9A7FF700F27DDF /* NSObject+BindingTarget.swift */; };
@@ -339,6 +350,10 @@
 		9ADE4A951DA6F018005C2AC8 /* NSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 		9ADFE5A01DBFFBCF001E11F7 /* LifetimeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeSpec.swift; sourceTree = "<group>"; };
 		9ADFE5A41DC0001C001E11F7 /* NSObject+Synchronizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Synchronizing.swift"; sourceTree = "<group>"; };
+		9AE7C28F1DDB733800F7534C /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACDelegateProxy.h; sourceTree = "<group>"; };
+		9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACDelegateProxy.m; sourceTree = "<group>"; };
+		9AE7C29E1DDBB50100F7534C /* RACDelegateProxySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACDelegateProxySpec.swift; sourceTree = "<group>"; };
 		9AF0EA741D9A7FF700F27DDF /* NSObject+BindingTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+BindingTarget.swift"; sourceTree = "<group>"; };
 		A97451331B3A935E00F48E55 /* watchOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Application.xcconfig"; sourceTree = "<group>"; };
 		A97451341B3A935E00F48E55 /* watchOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Base.xcconfig"; sourceTree = "<group>"; };
@@ -633,6 +648,8 @@
 				D04725EF19E49ED7006002AA /* ReactiveCocoa.h */,
 				9A1D06751D9415FB00ACF44C /* RACObjCRuntimeUtilities.h */,
 				9A1D06761D9415FB00ACF44C /* RACObjCRuntimeUtilities.m */,
+				9AE7C2901DDB737500F7534C /* RACDelegateProxy.h */,
+				9AE7C2911DDB737500F7534C /* RACDelegateProxy.m */,
 				9ADE4A7B1DA44A9E005C2AC8 /* CocoaAction.swift */,
 				CD0C45DD1CC9A288009F5BF0 /* DynamicProperty.swift */,
 				9ADE4A901DA6EA40005C2AC8 /* NSObject+ReactiveExtensionsProvider.swift */,
@@ -654,6 +671,7 @@
 		D04725ED19E49ED7006002AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AE7C28F1DDB733800F7534C /* module.modulemap */,
 				CDC42E2E1AE7AB8B00965373 /* Result.framework */,
 				D04725EE19E49ED7006002AA /* Info.plist */,
 			);
@@ -673,6 +691,7 @@
 				9A1E72B91D4DE96500CC20C3 /* KeyValueObservingSpec.swift */,
 				9A6AAA0D1DB6A4CF0013AAEA /* InterceptingSpec.swift */,
 				9ADFE5A01DBFFBCF001E11F7 /* LifetimeSpec.swift */,
+				9AE7C29E1DDBB50100F7534C /* RACDelegateProxySpec.swift */,
 				D04725FA19E49ED7006002AA /* Supporting Files */,
 			);
 			path = ReactiveCocoaTests;
@@ -766,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A4D20A1BA13D7A00F7D4B1 /* ReactiveCocoa.h in Headers */,
+				9AE7C29D1DDB751A00F7534C /* RACDelegateProxy.h in Headers */,
 				9A6AAA1C1DB808AA0013AAEA /* RACObjCRuntimeUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B315CA1B3940AB0001CB9C /* ReactiveCocoa.h in Headers */,
+				9AE7C29C1DDB751900F7534C /* RACDelegateProxy.h in Headers */,
 				9A6AAA1B1DB808A90013AAEA /* RACObjCRuntimeUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D04725F019E49ED7006002AA /* ReactiveCocoa.h in Headers */,
+				9AE7C29A1DDB751700F7534C /* RACDelegateProxy.h in Headers */,
 				9A6AAA191DB808A80013AAEA /* RACObjCRuntimeUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D037666419EDA43C00A782A9 /* ReactiveCocoa.h in Headers */,
+				9AE7C29B1DDB751800F7534C /* RACDelegateProxy.h in Headers */,
 				9A6AAA1A1DB808A80013AAEA /* RACObjCRuntimeUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,6 +1075,7 @@
 			files = (
 				9A1D06131D93EA0100ACF44C /* UIBarItem.swift in Sources */,
 				9A1D061F1D93EA0100ACF44C /* UITextField.swift in Sources */,
+				9AE7C2991DDB737500F7534C /* RACDelegateProxy.m in Sources */,
 				4ABEFE261DCFCF640066A8C2 /* UICollectionView.swift in Sources */,
 				9ADE4A7F1DA44A9E005C2AC8 /* CocoaAction.swift in Sources */,
 				9A1D06201D93EA0100ACF44C /* UITextView.swift in Sources */,
@@ -1096,6 +1120,7 @@
 				9A1D06451D93EA7E00ACF44C /* UIImageViewSpec.swift in Sources */,
 				9A1D06551D93EA7E00ACF44C /* UITextViewSpec.swift in Sources */,
 				9A1D063B1D93EA7E00ACF44C /* UIButtonSpec.swift in Sources */,
+				9AE7C2A11DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */,
 				9A1D064B1D93EA7E00ACF44C /* UISegmentedControlSpec.swift in Sources */,
 				9A1D063F1D93EA7E00ACF44C /* UIControl+EnableSendActionsForControlEvents.swift in Sources */,
 				9A1D06371D93EA7E00ACF44C /* UIActivityIndicatorViewSpec.swift in Sources */,
@@ -1127,6 +1152,7 @@
 				9ADE4A7E1DA44A9E005C2AC8 /* CocoaAction.swift in Sources */,
 				CD0C45E01CC9A288009F5BF0 /* DynamicProperty.swift in Sources */,
 				9AF0EA771D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */,
+				9AE7C2981DDB737500F7534C /* RACDelegateProxy.m in Sources */,
 				9A1D05E21D93E99100ACF44C /* NSObject+Association.swift in Sources */,
 				4A0E11011D2A92720065D310 /* NSObject+Lifetime.swift in Sources */,
 				9AD0F06C1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */,
@@ -1148,6 +1174,7 @@
 				9ADFE5A51DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */,
 				9ADE4A7C1DA44A9E005C2AC8 /* CocoaAction.swift in Sources */,
 				9ADE4A961DA6F018005C2AC8 /* NSTextField.swift in Sources */,
+				9AE7C2961DDB737500F7534C /* RACDelegateProxy.m in Sources */,
 				9A2E425E1DAA6737006D909F /* CocoaTarget.swift in Sources */,
 				9ADE4A891DA6D206005C2AC8 /* NSControl.swift in Sources */,
 				9AF0EA751D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */,
@@ -1175,6 +1202,7 @@
 				CD8401831CEE8ED7009F0ABF /* CocoaActionSpec.swift in Sources */,
 				9A9DFEE91DA7EFB60039EE1B /* AssociationSpec.swift in Sources */,
 				9A1E72BA1D4DE96500CC20C3 /* KeyValueObservingSpec.swift in Sources */,
+				9AE7C29F1DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */,
 				4ABEFE2E1DCFD01F0066A8C2 /* NSTableViewSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1201,6 +1229,7 @@
 				9A1D06021D93EA0000ACF44C /* UIButton.swift in Sources */,
 				419139461DB910570043C9D1 /* UIGestureRecognizer.swift in Sources */,
 				9A1D060A1D93EA0000ACF44C /* UISwitch.swift in Sources */,
+				9AE7C2971DDB737500F7534C /* RACDelegateProxy.m in Sources */,
 				9A1D065C1D93EC6E00ACF44C /* NSObject+Intercepting.swift in Sources */,
 				9A1D06071D93EA0000ACF44C /* UILabel.swift in Sources */,
 				53A6BED31DD4BCA90016C058 /* MKMapView.swift in Sources */,
@@ -1253,6 +1282,7 @@
 				CD8401841CEE8ED7009F0ABF /* CocoaActionSpec.swift in Sources */,
 				538DCB7E1DCA5E9B00332880 /* NSLayoutConstraintSpec.swift in Sources */,
 				9A1D06521D93EA7E00ACF44C /* UITextFieldSpec.swift in Sources */,
+				9AE7C2A01DDBB50100F7534C /* RACDelegateProxySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
