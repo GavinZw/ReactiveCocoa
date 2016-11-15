@@ -19,9 +19,13 @@ default_signals.update({
 if target == "iOS":
 	exported_targets.update({
 		"UIDatePicker": [("Date", "date")],
-		"UISwitch": [("Bool", "isOn")]
+		"UISwitch": [("Bool", "isOn")],
+		"UISlider": [("Float", "value")],
+		"UIStepper": [("Double", "value")]
 	})
 	default_signals.update({
 		"UIDatePicker": ("Date", "dates"),
-		"UISwitch": ("Bool", "isOnValues")
+		"UISwitch": ("Bool", "isOnValues"),
+		"UISlider": ("Float", "values"),
+		"UIStepper": ("Double", "values")
 	})

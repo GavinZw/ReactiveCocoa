@@ -1,5 +1,13 @@
 run() {
-        script/gyb/gyb -Dframework=$1 -Dtarget=$2 --line-directive '' -o ReactiveCocoa/$1/BindingTargetSubstituting.$2.generated.swift ReactiveCocoa/BindingTargetSubstituting.swift.gyb
+	if [[ "$1" == "AppKit" ]]; then
+		FOLDER_PATH=AppKit
+	fi
+
+	if [[ "$1" == "UIKit" ]]; then
+		FOLDER_PATH=UIKit/$2
+	fi
+	
+        script/gyb/gyb -Dframework=$1 -Dtarget=$2 --line-directive '' -o ReactiveCocoa/$FOLDER_PATH/BindingTargetSubstituting.swift ReactiveCocoa/BindingTargetSubstituting.swift.gyb
 }
 
 run AppKit macOS
