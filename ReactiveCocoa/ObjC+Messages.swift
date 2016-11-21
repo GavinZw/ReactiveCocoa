@@ -12,6 +12,9 @@ internal let NSMethodSignature: AnyClass = NSClassFromString("NSMethodSignature"
 @objc internal protocol ObjCClassReporting {
 	@objc(class)
 	var objcClass: AnyClass! { get }
+
+	@objc(class)
+	static var objcClass: AnyClass! { get }
 }
 
 // Methods of `NSInvocation`.

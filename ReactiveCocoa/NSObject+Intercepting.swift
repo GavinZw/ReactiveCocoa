@@ -34,7 +34,7 @@ extension Reactive where Base: NSObject {
 	/// - returns:
 	///   A signal that sends an array of bridged arguments.
 	public func signal(for selector: Selector) -> Signal<[Any?], NoError> {
-		return setupInterception(base, for: selector).map(unpackInvocation)
+		return setupInterception(base, for: selector, packsArguments: true).map { $0! }
 	}
 }
 
@@ -47,7 +47,7 @@ extension Reactive where Base: NSObject {
 /// - returns:
 ///   A signal that sends the corresponding `NSInvocation` after every
 ///   invocation of the method.
-private func setupInterception(_ object: NSObject, for selector: Selector) -> Signal<AnyObject, NoError> {
+private func setupInterception(_ object: NSObject, for selector: Selector, packsArguments: Bool = false) -> Signal<[Any?]?, NoError> {
 	let alias = selector.alias
 	let interopAlias = selector.interopAlias
 
@@ -60,6 +60,9 @@ private func setupInterception(_ object: NSObject, for selector: Selector) -> Si
 
 	return object.synchronized {
 		if let state = object.value(forAssociatedKey: alias.utf8Start) as! InterceptingState? {
+			if packsArguments {
+				state.wantsArguments()
+			}
 			return state.signal
 		}
 
@@ -90,10 +93,11 @@ private func setupInterception(_ object: NSObject, for selector: Selector) -> Si
 
 			if !class_respondsToSelector(subclass, interopAlias) {
 				let immediateMethod = class_getImmediateMethod(subclass, selector)
+				let generatedImpl = objc_getAssociatedObject(subclass, interopAlias.utf8Start) as! IMP?
 
 				let immediateImpl: IMP? = immediateMethod.flatMap {
 					let immediateImpl = method_getImplementation($0)
-					return immediateImpl.flatMap { $0 != _rac_objc_msgForward ? $0 : nil }
+					return immediateImpl.flatMap { $0 != _rac_objc_msgForward && $0 != generatedImpl ? $0 : nil }
 				}
 
 				if let impl = immediateImpl {
@@ -110,10 +114,24 @@ private func setupInterception(_ object: NSObject, for selector: Selector) -> Si
 		}
 
 		let state = InterceptingState(lifetime: object.reactive.lifetime)
+		if packsArguments {
+			state.wantsArguments()
+		}
 		object.setValue(state, forAssociatedKey: alias.utf8Start)
 
-		// Start forwarding the messages of the selector.
-		_ = class_replaceMethod(subclass, selector, _rac_objc_msgForward, typeEncoding)
+		if let template = InterceptionTemplates.template(forTypeEncoding: typeEncoding) {
+			var impl = objc_getAssociatedObject(subclass, interopAlias.utf8Start) as! IMP?
+
+			if impl == nil {
+				impl = template(subclass.objcClass, subclass, selector)
+				objc_setAssociatedObject(subclass, interopAlias.utf8Start, impl!, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+			}
+
+			_ = class_replaceMethod(subclass, selector, impl!, typeEncoding)
+		} else {
+			// Start forwarding the messages of the selector.
+			_ = class_replaceMethod(subclass, selector, _rac_objc_msgForward, typeEncoding)
+		}
 
 		return state.signal
 	}
@@ -134,7 +152,7 @@ private func enableMessageForwarding(_ realClass: AnyClass) {
 
 		defer {
 			if let state = object.value(forAssociatedKey: alias.utf8Start) as! InterceptingState? {
-				state.observer.send(value: invocation)
+				state.send(invocation: invocation)
 			}
 		}
 
@@ -222,15 +240,30 @@ private func setupMethodSignatureCaching(_ realClass: AnyClass, _ signatureCache
 }
 
 /// The state of an intercepted method specific to an instance.
-private final class InterceptingState {
-	let (signal, observer) = Signal<AnyObject, NoError>.pipe()
+internal final class InterceptingState {
+	fileprivate let signal: Signal<[Any?]?, NoError>
+	private let observer: Signal<[Any?]?, NoError>.Observer
+	private var packsArguments = false
 
 	/// Initialize a state specific to an instance.
 	///
 	/// - parameters:
 	///   - lifetime: The lifetime of the instance.
 	init(lifetime: Lifetime) {
+		(signal, observer) = Signal<[Any?]?, NoError>.pipe()
 		lifetime.ended.observeCompleted(observer.sendCompleted)
+	}
+
+	func wantsArguments() {
+		packsArguments = true
+	}
+
+	func send(invocation: AnyObject) {
+		observer.send(value: packsArguments ? unpackInvocation(invocation) : nil)
+	}
+
+	func send(packIfNeeded action: () -> [Any?]) {
+		observer.send(value: packsArguments ? action() : nil)
 	}
 }
 
@@ -271,7 +304,7 @@ private func unpackInvocation(_ invocation: AnyObject) -> [Any?] {
 	let methodSignature = invocation.objcMethodSignature!
 	let count = UInt(methodSignature.numberOfArguments!)
 
-	var bridged = [Any?]()
+	var bridged = [Any]()
 	bridged.reserveCapacity(Int(count - 2))
 
 	// Ignore `self` and `_cmd` at index 0 and 1.
@@ -319,11 +352,11 @@ private func unpackInvocation(_ invocation: AnyObject) -> [Any?] {
 		case .bool:
 			bridged.append(NSNumber(value: extract(CBool.self)))
 		case .object:
-			bridged.append(extract((AnyObject?).self))
+			bridged.append(extract((AnyObject?).self) as Any)
 		case .type:
-			bridged.append(extract((AnyClass?).self))
+			bridged.append(extract((AnyClass?).self) as Any)
 		case .selector:
-			bridged.append(extract((Selector?).self))
+			bridged.append(extract((Selector?).self) as Any)
 		case .undefined:
 			var size = 0, alignment = 0
 			NSGetSizeAndAlignment(rawEncoding, &size, &alignment)

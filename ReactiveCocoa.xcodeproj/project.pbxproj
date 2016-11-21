@@ -121,6 +121,10 @@
 		9A24A8451DE142A400987AF9 /* SwizzlingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8431DE1429600987AF9 /* SwizzlingSpec.swift */; };
 		9A24A8461DE142A500987AF9 /* SwizzlingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8431DE1429600987AF9 /* SwizzlingSpec.swift */; };
 		9A24A8471DE142A600987AF9 /* SwizzlingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8431DE1429600987AF9 /* SwizzlingSpec.swift */; };
+		9A24A8531DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */; };
+		9A24A8541DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */; };
+		9A24A8551DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */; };
+		9A24A8561DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */; };
 		9A2E425E1DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
 		9A2E425F1DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
 		9A2E42601DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
@@ -360,6 +364,7 @@
 		9A1E72B91D4DE96500CC20C3 /* KeyValueObservingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueObservingSpec.swift; sourceTree = "<group>"; };
 		9A24A83E1DE1386800987AF9 /* ThreadLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadLocal.swift; sourceTree = "<group>"; };
 		9A24A8431DE1429600987AF9 /* SwizzlingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwizzlingSpec.swift; sourceTree = "<group>"; };
+		9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObjC+InterceptionTemplates.swift"; sourceTree = "<group>"; };
 		9A2E425D1DAA6737006D909F /* CocoaTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaTarget.swift; sourceTree = "<group>"; };
 		9A54A2101DDF5B4D001739B3 /* InterceptingPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterceptingPerformanceTests.swift; sourceTree = "<group>"; };
 		9A54A21A1DE00D09001739B3 /* ObjC+Selector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObjC+Selector.swift"; sourceTree = "<group>"; };
@@ -693,6 +698,7 @@
 				9A54A21A1DE00D09001739B3 /* ObjC+Selector.swift */,
 				9AA0BD801DDE03F500531FCF /* ObjC+RuntimeSubclassing.swift */,
 				9AA0BD771DDE03DE00531FCF /* ObjC+Runtime.swift */,
+				9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */,
 				9A24A83E1DE1386800987AF9 /* ThreadLocal.swift */,
 				9A1D05E91D93E9F100ACF44C /* AppKit */,
 				9A1D05EB1D93E9F100ACF44C /* UIKit */,
@@ -1143,6 +1149,7 @@
 				9A1D06111D93EA0100ACF44C /* UIActivityIndicatorView.swift in Sources */,
 				9A1D061B1D93EA0100ACF44C /* UISegmentedControl.swift in Sources */,
 				9A54A21E1DE00D09001739B3 /* ObjC+Selector.swift in Sources */,
+				9A24A8561DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,6 +1199,7 @@
 				9AA0BD9A1DDE7A2200531FCF /* ObjCRuntimeAliases.m in Sources */,
 				9ADE4A931DA6EA40005C2AC8 /* NSObject+ReactiveExtensionsProvider.swift in Sources */,
 				9AA0BD8C1DDE153A00531FCF /* ObjC+Constants.swift in Sources */,
+				9A24A8551DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */,
 				9ADFE5A71DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */,
 				9ADE4A7E1DA44A9E005C2AC8 /* CocoaAction.swift in Sources */,
 				9A24A8411DE1386800987AF9 /* ThreadLocal.swift in Sources */,
@@ -1210,6 +1218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A24A8531DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */,
 				4ABEFE2B1DCFD0030066A8C2 /* NSTableView.swift in Sources */,
 				CD0C45DE1CC9A288009F5BF0 /* DynamicProperty.swift in Sources */,
 				4ABEFE301DCFD0530066A8C2 /* NSCollectionView.swift in Sources */,
@@ -1289,6 +1298,7 @@
 				9AA0BD7D1DDE03DE00531FCF /* ObjC+Runtime.swift in Sources */,
 				9A1D060A1D93EA0000ACF44C /* UISwitch.swift in Sources */,
 				9A1D065C1D93EC6E00ACF44C /* NSObject+Intercepting.swift in Sources */,
+				9A24A8541DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift in Sources */,
 				9A1D06071D93EA0000ACF44C /* UILabel.swift in Sources */,
 				53A6BED31DD4BCA90016C058 /* MKMapView.swift in Sources */,
 				4A0E11001D2A92720065D310 /* NSObject+Lifetime.swift in Sources */,
