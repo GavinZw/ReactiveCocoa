@@ -1,0 +1,2 @@
+script/gyb/gyb --line-directive '' -o ReactiveCocoa/ObjC+InterceptionGeneratedTemplates.swift ReactiveCocoa/ObjC+InterceptionTemplates.swift.gyb
+

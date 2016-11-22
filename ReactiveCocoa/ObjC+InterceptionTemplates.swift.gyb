@@ -1,0 +1,77 @@
+%{
+typeEncodings = [
+	# `() -> Void`
+	"v@:",
+
+	# Common setters and methods: `(U) -> Void`
+	"v@:c", "v@:l", "v@:q",
+
+	# Common delegate signatures
+	"v@:@q", "v@:@l", "v@:@d", "v@:@f", "v@:@@", "v@:@@q", "v@:@@@"
+]
+
+types = {
+	"v": "Void", "@": "AnyObject?", ":": "Selector",
+	"c": "CChar", "C": "CUnsignedChar",
+	"s": "CShort", "S": "CUnsignedShort",
+	"l": "CLong", "L": "CUnsignedLong",
+	"q": "CLongLong", "Q": "CUnsignedLongLong",
+	"b": "CBool",
+	"f": "CFloat", "d": "CDouble"
+}
+
+replacementsForFunctionName = {
+	"v": "v0", "@": "id", ":": "sel",
+	"c": "i8", "C": "u8",
+	"s": "i16", "S": "u16",
+	"l": "i32", "L": "u32",
+	"q": "i64", "Q": "u64",
+	"b": "b1",
+	"f": "f32", "d": "f64"
+}
+
+placeholders = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+                "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+def extractReturnType(encoding):
+	assert len(encoding) >= 3
+	return types[encoding[0]]
+
+def extractInputTypes(encoding):
+	assert len(encoding) >= 3
+	if len(encoding) == 3:
+		return []
+	else:
+		return [types[char] for char in encoding[3:]]
+
+def templateName(encoding):
+	assert len(encoding) >= 3
+	return "_" + '_'.join([replacementsForFunctionName.get(char, char) for char in encoding])
+}%
+extension InterceptionTemplates {
+	internal static func setup() -> [String: Template] {
+		return [
+% for encoding in typeEncodings:
+			"${encoding}": ${templateName(encoding)},
+% end
+		]
+	}
+}
+
+% for encoding in typeEncodings:
+%{
+	inputTypes = extractInputTypes(encoding)
+	declarationString = ", " + (', '.join(inputTypes)) if len(inputTypes) > 0 else ""
+	inputArgumentString = ", " + (', '.join(placeholders[0:len(inputTypes)])) if len(inputTypes) > 0 else ""
+	arrayValueString = inputArgumentString[2:] if len(inputArgumentString) > 0 else ""
+}%
+private let ${templateName(encoding)}: InterceptionTemplates.Template = { perceivedClass, realClass, selector in
+		let impl: @convention(block) (NSObject${declarationString}) -> Void = { object${inputArgumentString} in
+		typealias CImpl = @convention(c) (NSObject, Selector${declarationString}) -> Void
+		_rac_interception_template(object, perceivedClass, realClass, selector,
+		                           { unsafeBitCast($0, to: CImpl.self)(object, selector${inputArgumentString}) },
+		                           { [${arrayValueString}] })
+	}
+	return imp_implementationWithBlock(impl as Any)
+}
+% end

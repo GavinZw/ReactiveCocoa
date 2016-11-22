@@ -3,13 +3,6 @@ internal class InterceptionTemplates {
 
 	private static let shared = setup()
 
-	private static func setup() -> [String: Template] {
-		return [
-			"v@:": invokeVoidVoid,
-			"v@:q": invokeVoidInt
-		]
-	}
-
 	static func template(forTypeEncoding types: UnsafePointer<Int8>) -> Template? {
 		var iterator = types
 		var characters = [UInt8]()
@@ -31,27 +24,7 @@ internal class InterceptionTemplates {
 	}
 }
 
-private let invokeVoidInt: (AnyClass, AnyClass, Selector) -> IMP = { perceivedClass, realClass, selector in
-	let impl: @convention(block) (NSObject, Int) -> Void = { object, first in
-		typealias CImpl = @convention(c) (NSObject, Selector, Int) -> Void
-		template(object, perceivedClass, realClass, selector,
-		         { unsafeBitCast($0, to: CImpl.self)(object, selector, first) },
-		         { [first] })
-	}
-	return imp_implementationWithBlock(impl as Any)
-}
-
-private let invokeVoidVoid: (AnyClass, AnyClass, Selector) -> IMP = { perceivedClass, realClass, selector in
-	let impl: @convention(block) (NSObject) -> Void = { object in
-		typealias CImpl = @convention(c) (NSObject, Selector) -> Void
-		template(object, perceivedClass, realClass, selector,
-		         { unsafeBitCast($0, to: CImpl.self)(object, selector) },
-		         { [] })
-	}
-	return imp_implementationWithBlock(impl as Any)
-}
-
-private func template(_ object: NSObject, _ perceivedClass: AnyClass, _ realClass: AnyClass, _ selector: Selector, _ invoke: (IMP) -> Void, _ packer: () -> [Any?]) {
+internal func _rac_interception_template(_ object: NSObject, _ perceivedClass: AnyClass, _ realClass: AnyClass, _ selector: Selector, _ invoke: (IMP) -> Void, _ packer: () -> [Any?]) {
 	let alias = selector.alias
 	let interopAlias = selector.interopAlias
 

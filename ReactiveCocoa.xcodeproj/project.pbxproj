@@ -129,6 +129,10 @@
 		9A2E425F1DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
 		9A2E42601DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
 		9A2E42611DAA6737006D909F /* CocoaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E425D1DAA6737006D909F /* CocoaTarget.swift */; };
+		9A4287C51DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */; };
+		9A4287C61DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */; };
+		9A4287C71DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */; };
+		9A4287C81DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */; };
 		9A54A2111DDF5B4D001739B3 /* InterceptingPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54A2101DDF5B4D001739B3 /* InterceptingPerformanceTests.swift */; };
 		9A54A2121DDF5B4D001739B3 /* InterceptingPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54A2101DDF5B4D001739B3 /* InterceptingPerformanceTests.swift */; };
 		9A54A2131DDF5B4D001739B3 /* InterceptingPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54A2101DDF5B4D001739B3 /* InterceptingPerformanceTests.swift */; };
@@ -366,6 +370,8 @@
 		9A24A8431DE1429600987AF9 /* SwizzlingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwizzlingSpec.swift; sourceTree = "<group>"; };
 		9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObjC+InterceptionTemplates.swift"; sourceTree = "<group>"; };
 		9A2E425D1DAA6737006D909F /* CocoaTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaTarget.swift; sourceTree = "<group>"; };
+		9A4287C31DE4CC4F0031867F /* ObjC+InterceptionTemplates.swift.gyb */ = {isa = PBXFileReference; explicitFileType = text.script.python; path = "ObjC+InterceptionTemplates.swift.gyb"; sourceTree = "<group>"; };
+		9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObjC+InterceptionGeneratedTemplates.swift"; sourceTree = "<group>"; };
 		9A54A2101DDF5B4D001739B3 /* InterceptingPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterceptingPerformanceTests.swift; sourceTree = "<group>"; };
 		9A54A21A1DE00D09001739B3 /* ObjC+Selector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObjC+Selector.swift"; sourceTree = "<group>"; };
 		9A54A24E1DE123BD001739B3 /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
@@ -605,6 +611,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		9A4287C91DE4D91C0031867F /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				9A4287C41DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
 		9ADE4A8C1DA6D94C005C2AC8 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,10 +713,12 @@
 				9AA0BD801DDE03F500531FCF /* ObjC+RuntimeSubclassing.swift */,
 				9AA0BD771DDE03DE00531FCF /* ObjC+Runtime.swift */,
 				9A24A8521DE32BFF00987AF9 /* ObjC+InterceptionTemplates.swift */,
+				9A4287C31DE4CC4F0031867F /* ObjC+InterceptionTemplates.swift.gyb */,
 				9A24A83E1DE1386800987AF9 /* ThreadLocal.swift */,
 				9A1D05E91D93E9F100ACF44C /* AppKit */,
 				9A1D05EB1D93E9F100ACF44C /* UIKit */,
 				538DCB761DCA5E1600332880 /* Shared */,
+				9A4287C91DE4D91C0031867F /* Generated */,
 				D04725ED19E49ED7006002AA /* Supporting Files */,
 			);
 			path = ReactiveCocoa;
@@ -1140,6 +1156,7 @@
 				9ADFE5A81DC0001C001E11F7 /* NSObject+Synchronizing.swift in Sources */,
 				CD0C45E11CC9A288009F5BF0 /* DynamicProperty.swift in Sources */,
 				9AA0BD921DDE29F800531FCF /* NSObject+ObjCRuntime.swift in Sources */,
+				9A4287C81DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */,
 				9A24A8421DE1386800987AF9 /* ThreadLocal.swift in Sources */,
 				9A1D061A1D93EA0100ACF44C /* UIProgressView.swift in Sources */,
 				9AA0BD7F1DDE03DE00531FCF /* ObjC+Runtime.swift in Sources */,
@@ -1211,6 +1228,7 @@
 				4A0E11011D2A92720065D310 /* NSObject+Lifetime.swift in Sources */,
 				9AE7C2A61DDD7F5100F7534C /* ObjC+Messages.swift in Sources */,
 				9AD0F06C1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */,
+				9A4287C71DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,6 +1243,7 @@
 				9AD0F06A1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */,
 				9AA0BD8F1DDE29F800531FCF /* NSObject+ObjCRuntime.swift in Sources */,
 				9A1D05E01D93E99100ACF44C /* NSObject+Association.swift in Sources */,
+				9A4287C51DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */,
 				538DCB791DCA5E6C00332880 /* NSLayoutConstraint.swift in Sources */,
 				9AE7C2A41DDD7F5100F7534C /* ObjC+Messages.swift in Sources */,
 				9A54A21B1DE00D09001739B3 /* ObjC+Selector.swift in Sources */,
@@ -1282,6 +1301,7 @@
 				9A1D060E1D93EA0000ACF44C /* UITextView.swift in Sources */,
 				9A1D06061D93EA0000ACF44C /* UIImageView.swift in Sources */,
 				9AF0EA761D9A7FF700F27DDF /* NSObject+BindingTarget.swift in Sources */,
+				9A4287C61DE4D60F0031867F /* ObjC+InterceptionGeneratedTemplates.swift in Sources */,
 				9A24A8401DE1386800987AF9 /* ThreadLocal.swift in Sources */,
 				CD0C45DF1CC9A288009F5BF0 /* DynamicProperty.swift in Sources */,
 				9AE7C2A51DDD7F5100F7534C /* ObjC+Messages.swift in Sources */,
