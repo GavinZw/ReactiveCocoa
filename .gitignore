@@ -20,3 +20,6 @@ PlaygroundUtility.remap
 
 # Carthage
 Carthage/Build
+
+# Python
+*.pyc
