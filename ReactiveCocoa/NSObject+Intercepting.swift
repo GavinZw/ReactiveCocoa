@@ -53,6 +53,9 @@ extension Reactive where Base: NSObject {
 // - `&interceptedSelectorsKey`
 //   Holds the method signature cache of the runtime subclass.
 //
+// - `alias.utf8Start`
+//   Nullable. Holds the IMP generated for the selector.
+//
 // Intercepted instances:
 // - `alias.utf8Start`
 //   Nullable. Holds the `InterceptingState` of the selector for the instance.
@@ -112,7 +115,7 @@ private func setupInterception(_ object: NSObject, for selector: Selector, packs
 
 			if !class_respondsToSelector(subclass, interopAlias) {
 				let immediateMethod = class_getImmediateMethod(subclass, selector)
-				let generatedImpl = objc_getAssociatedObject(subclass, interopAlias.utf8Start) as! IMP?
+				let generatedImpl = objc_getAssociatedObject(subclass, alias.utf8Start) as! IMP?
 
 				let immediateImpl: IMP? = immediateMethod.flatMap {
 					let immediateImpl = method_getImplementation($0)
@@ -139,11 +142,11 @@ private func setupInterception(_ object: NSObject, for selector: Selector, packs
 		object.setValue(state, forAssociatedKey: alias.utf8Start)
 
 		if let template = InterceptionTemplates.template(forTypeEncoding: typeEncoding) {
-			var impl = objc_getAssociatedObject(subclass, interopAlias.utf8Start) as! IMP?
+			var impl = objc_getAssociatedObject(subclass, alias.utf8Start) as! IMP?
 
 			if impl == nil {
 				impl = template(subclass.objcClass, subclass, selector)
-				objc_setAssociatedObject(subclass, interopAlias.utf8Start, impl!, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+				objc_setAssociatedObject(subclass, alias.utf8Start, impl!, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 			}
 
 			_ = class_replaceMethod(subclass, selector, impl!, typeEncoding)
