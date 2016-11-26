@@ -151,6 +151,18 @@
 		9A9DFEE91DA7EFB60039EE1B /* AssociationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9DFEE81DA7EFB60039EE1B /* AssociationSpec.swift */; };
 		9A9DFEEA1DA7EFB60039EE1B /* AssociationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9DFEE81DA7EFB60039EE1B /* AssociationSpec.swift */; };
 		9A9DFEEB1DA7EFB60039EE1B /* AssociationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9DFEE81DA7EFB60039EE1B /* AssociationSpec.swift */; };
+		9AA140961DE9F2E000C5E04F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140951DE9F2E000C5E04F /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA140981DE9F2E800C5E04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140971DE9F2E800C5E04F /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA1409A1DE9F2F600C5E04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140991DE9F2F600C5E04F /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA1409C1DE9F2FD00C5E04F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1409B1DE9F2FD00C5E04F /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA1409E1DE9F30600C5E04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1409D1DE9F30600C5E04F /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA140A01DE9F31200C5E04F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA1409F1DE9F31200C5E04F /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA140A21DE9F31C00C5E04F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140A11DE9F31C00C5E04F /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA140A41DE9F32400C5E04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140A31DE9F32400C5E04F /* MapKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9AA140A61DE9F35700C5E04F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140A51DE9F35700C5E04F /* AppKit.framework */; };
+		9AA140A81DE9F35D00C5E04F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140A71DE9F35D00C5E04F /* UIKit.framework */; };
+		9AA140AA1DE9F36600C5E04F /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140A91DE9F36600C5E04F /* WatchKit.framework */; };
+		9AA140AC1DE9F36C00C5E04F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA140AB1DE9F36C00C5E04F /* UIKit.framework */; };
 		9AD0F06A1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0F0691D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift */; };
 		9AD0F06B1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0F0691D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift */; };
 		9AD0F06C1D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0F0691D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift */; };
@@ -345,6 +357,18 @@
 		9A6AAA271DB8F7EB0013AAEA /* ReusableComponentsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableComponentsSpec.swift; sourceTree = "<group>"; };
 		9A6AAA291DB8F7F10013AAEA /* ReusableComponentsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableComponentsSpec.swift; sourceTree = "<group>"; };
 		9A9DFEE81DA7EFB60039EE1B /* AssociationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociationSpec.swift; sourceTree = "<group>"; };
+		9AA140951DE9F2E000C5E04F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9AA140971DE9F2E800C5E04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9AA140991DE9F2F600C5E04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AA1409B1DE9F2FD00C5E04F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		9AA1409D1DE9F30600C5E04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AA1409F1DE9F31200C5E04F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		9AA140A11DE9F31C00C5E04F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		9AA140A31DE9F32400C5E04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AA140A51DE9F35700C5E04F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9AA140A71DE9F35D00C5E04F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AA140A91DE9F36600C5E04F /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
+		9AA140AB1DE9F36C00C5E04F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9AD0F0691D48BA4800ADFAB7 /* NSObject+KeyValueObserving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+KeyValueObserving.swift"; sourceTree = "<group>"; };
 		9ADE4A7B1DA44A9E005C2AC8 /* CocoaAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaAction.swift; sourceTree = "<group>"; };
 		9ADE4A881DA6D206005C2AC8 /* NSControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSControl.swift; sourceTree = "<group>"; };
@@ -407,6 +431,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA140AC1DE9F36C00C5E04F /* UIKit.framework in Frameworks */,
+				9AA140A41DE9F32400C5E04F /* MapKit.framework in Frameworks */,
+				9AA140A21DE9F31C00C5E04F /* CoreData.framework in Frameworks */,
 				BE330A191D634F5900806963 /* ReactiveSwift.framework in Frameworks */,
 				57A4D2081BA13D7A00F7D4B1 /* Result.framework in Frameworks */,
 			);
@@ -427,6 +454,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA140AA1DE9F36600C5E04F /* WatchKit.framework in Frameworks */,
+				9AA140A01DE9F31200C5E04F /* CoreData.framework in Frameworks */,
+				9AA1409E1DE9F30600C5E04F /* MapKit.framework in Frameworks */,
 				BE330A171D634F4E00806963 /* ReactiveSwift.framework in Frameworks */,
 				A9B315C91B3940980001CB9C /* Result.framework in Frameworks */,
 			);
@@ -436,6 +466,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA140A61DE9F35700C5E04F /* AppKit.framework in Frameworks */,
+				9AA140981DE9F2E800C5E04F /* MapKit.framework in Frameworks */,
+				9AA140961DE9F2E000C5E04F /* CoreData.framework in Frameworks */,
 				BE330A0F1D634F1E00806963 /* ReactiveSwift.framework in Frameworks */,
 				CDC42E2F1AE7AB8B00965373 /* Result.framework in Frameworks */,
 			);
@@ -457,6 +490,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA140A81DE9F35D00C5E04F /* UIKit.framework in Frameworks */,
+				9AA1409C1DE9F2FD00C5E04F /* CoreData.framework in Frameworks */,
+				9AA1409A1DE9F2F600C5E04F /* MapKit.framework in Frameworks */,
 				BE330A131D634F2E00806963 /* ReactiveSwift.framework in Frameworks */,
 				CDC42E311AE7AB8B00965373 /* Result.framework in Frameworks */,
 			);
@@ -610,6 +646,18 @@
 		BE330A0D1D634F1E00806963 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AA140AB1DE9F36C00C5E04F /* UIKit.framework */,
+				9AA140A91DE9F36600C5E04F /* WatchKit.framework */,
+				9AA140A71DE9F35D00C5E04F /* UIKit.framework */,
+				9AA140A51DE9F35700C5E04F /* AppKit.framework */,
+				9AA140A31DE9F32400C5E04F /* MapKit.framework */,
+				9AA140A11DE9F31C00C5E04F /* CoreData.framework */,
+				9AA1409F1DE9F31200C5E04F /* CoreData.framework */,
+				9AA1409D1DE9F30600C5E04F /* MapKit.framework */,
+				9AA1409B1DE9F2FD00C5E04F /* CoreData.framework */,
+				9AA140991DE9F2F600C5E04F /* MapKit.framework */,
+				9AA140971DE9F2E800C5E04F /* MapKit.framework */,
+				9AA140951DE9F2E000C5E04F /* CoreData.framework */,
 				BE330A1A1D634F5F00806963 /* ReactiveSwift.framework */,
 				BE330A181D634F5900806963 /* ReactiveSwift.framework */,
 				BE330A161D634F4E00806963 /* ReactiveSwift.framework */,
